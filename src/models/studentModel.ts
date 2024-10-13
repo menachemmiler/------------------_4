@@ -39,9 +39,8 @@ const StudentSchema = new Schema<IStudent>({
     required: [true, "password is required!"],
   },
   classId: {
-    //משתמש מחזיק מערך של פוסטים )רפרנסים(
     type: Schema.Types.ObjectId,
-    ref: "Class",
+    ref: "Student",
   },
   tests: {
     //רשימה של מבחנים של אותו תלמיד

@@ -1,3 +1,4 @@
+import { Schema } from "mongoose";
 import classModel from "../models/classModel";
 import studentModel, { IStudent } from "../models/studentModel";
 
@@ -12,13 +13,13 @@ export const createStudentService = async (
     const newStudent = new studentModel(studentData);
     const savedStudent = await newStudent.save();
     //find is class and add im to ref of list students in the class
-    const dbClass = await classModel.findOne(
+    const dbClass = await classModel.updateOne(
       { _id: classId },
       {
-        $addToSet: { students: savedStudent._id },
+        $push: { students: savedStudent._id },
       }
     );
-    if (!dbClass) throw new Error("class not found");
+    console.log(dbClass);
     return savedStudent;
   } catch (err: any) {
     throw err;
