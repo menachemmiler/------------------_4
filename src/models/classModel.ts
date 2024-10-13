@@ -14,6 +14,7 @@ const PostSchema = new Schema<IClass>({
     type: String,
     required: [true, "teacherName is required!"],
     minlength: [4, "title to be at last 4 chars"],
+    unique: true,
   },
   teacheremail: {
     type: String,

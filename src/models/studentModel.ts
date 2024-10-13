@@ -29,6 +29,7 @@ const StudentSchema = new Schema<IStudent>({
   name: {
     type: String,
     required: [true, "name is required!"],
+    unique: true,
   },
   email: {
     type: String,

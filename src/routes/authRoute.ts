@@ -1,10 +1,11 @@
 import { Router } from 'express';
-import { login } from '../controllers/authController';
+import { loginStudent, loginTeacher } from '../controllers/authController';
 
 const router = Router();
 
 
-router.post('/login', login); // התחברות של משתמש למערכת (יוצר לו טוקן עם הפרטים שלו)
+router.post('/student/login', loginStudent);
+router.post('/teacher/login', loginTeacher);
 
 
 

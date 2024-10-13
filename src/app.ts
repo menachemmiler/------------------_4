@@ -5,6 +5,8 @@ import { errorHandler } from "./middleware/errorHandler";
 import connectDB from "./config/db";
 import cookieParser from "cookie-parser";
 import studentRouter from "./routes/studentRoutes";
+import authRoute from "./routes/authRoute";
+
 
 dotenv.config();
 
@@ -18,7 +20,7 @@ app.use(cookieParser()); //
 connectDB();
 
 // Routes
-// app.use("/auth", authRout);
+app.use("/auth", authRoute);
 app.use("/class", classRouter);
 app.use("/student", studentRouter);
 
