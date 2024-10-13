@@ -1,6 +1,7 @@
 import { Schema } from "mongoose";
 import classModel from "../models/classModel";
 import studentModel, { IStudent } from "../models/studentModel";
+import bcrypt from "bcryptjs";
 
 //create a new student
 export const createStudentService = async (
@@ -10,7 +11,13 @@ export const createStudentService = async (
     const { name, email, password, classId } = studentData;
     if (!name || !email || !password || !classId)
       throw new Error("missing info");
-    const newStudent = new studentModel(studentData);
+    let hashPassword = await  bcrypt.hash(password, 10);
+    const newStudent = new studentModel({
+      name,
+      email,
+      password: hashPassword,
+      classId,
+    });
     const savedStudent = await newStudent.save();
     //find is class and add im to ref of list students in the class
     const dbClass = await classModel.updateOne(
