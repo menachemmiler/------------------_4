@@ -1,9 +1,8 @@
-// import { NextFunction, Router } from "express";
-// import {createStudent} from "../controllers/studentController"
+import { NextFunction, Router } from "express";
+import { createStudent } from "../controllers/studentController";
 
+const studentRouter = Router();
 
-// const userRouter = Router();
+studentRouter.post("/", createStudent);
 
-// userRouter.post("/", createStudent);
-
-// export default userRouter;
+export default studentRouter;

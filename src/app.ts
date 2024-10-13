@@ -4,6 +4,7 @@ import classRouter from "./routes/classRoutes";
 import { errorHandler } from "./middleware/errorHandler";
 import connectDB from "./config/db";
 import cookieParser from "cookie-parser";
+import studentRouter from "./routes/studentRoutes";
 
 dotenv.config();
 
@@ -19,7 +20,7 @@ connectDB();
 // Routes
 // app.use("/auth", authRout);
 app.use("/class", classRouter);
-// app.use("/student", stude);
+app.use("/student", studentRouter);
 
 // Error handling middleware
 app.use(errorHandler);

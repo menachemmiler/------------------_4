@@ -5,7 +5,7 @@ export interface IClass extends Document {
   teacheremail: string;
   teacherpassword: string;
   classname: string;
-  stusents?: Schema.Types.ObjectId[];
+  students: Schema.Types.ObjectId[];
 }
 
 
@@ -28,9 +28,9 @@ const PostSchema = new Schema<IClass>({
     required: [true, "classname is required!"],
     unique: true,//ייחודי 
   },
-  stusents: {
+  students: {
     type: [Schema.Types.ObjectId],
-    ref: "Student",
+    ref: "Class",
     default: [],
   },
 });
