@@ -17,10 +17,10 @@ const TestSchema = new Schema({
 });
 
 export interface IStudent extends Document {
-  name: string; 
-  email: string; 
+  name: string;
+  email: string;
   password: string;
-  class: Schema.Types.ObjectId;//רפרנס למזהה של הכיתה שלו
+  classId: Schema.Types.ObjectId; //רפרנס למזהה של הכיתה שלו
   //list of tests
   tests?: ITest[];
 }
@@ -38,12 +38,13 @@ const StudentSchema = new Schema<IStudent>({
     type: String,
     required: [true, "password is required!"],
   },
-  class: {
+  classId: {
     //משתמש מחזיק מערך של פוסטים )רפרנסים(
     type: Schema.Types.ObjectId,
     ref: "Class",
   },
-  tests: {//רשימה של מבחנים של אותו תלמיד
+  tests: {
+    //רשימה של מבחנים של אותו תלמיד
     type: [TestSchema],
   },
 });
