@@ -1,7 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
 import classRouter from "./routes/classRoutes";
-import authRout from "./routes/authRoute";
 import { errorHandler } from "./middleware/errorHandler";
 import connectDB from "./config/db";
 import cookieParser from "cookie-parser";
@@ -20,7 +19,7 @@ connectDB();
 // Routes
 // app.use("/auth", authRout);
 app.use("/class", classRouter);
-// app.use("/users", userRouter);
+// app.use("/student", stude);
 
 // Error handling middleware
 app.use(errorHandler);
